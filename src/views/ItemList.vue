@@ -1,12 +1,90 @@
 <template>
   <div class="news-view">
-    <div class="news-list-nav">
-      <router-link v-if="page > 1" :to="'/' + type + '/' + (page - 1)">&lt; prev</router-link>
-      <a v-else class="disabled">&lt; prev</a>
-      <span>{{ page }}/{{ maxPage }}</span>
-      <router-link v-if="hasMore" :to="'/' + type + '/' + (page + 1)">more &gt;</router-link>
-      <a v-else class="disabled">more &gt;</a>
+    <div>
+      <accordion class="page-accordion" title="HN Time-Machine">
+        <p>HN Time-Machine is yet another HackerNews clone, but with a slight twist.</p>
+        <p>
+          Each story on the current HackerNews frontpage is presented with the
+          top 3 most similar stories based on their titles between 2006 and
+          2015. More specifically the titles are encoded into semantically
+          meaningful vectors and then ranked using cosine similarity.
+          If you want to learn more this, check out our
+          <a
+            class="external-link"
+            href="https://docs.google.com/document/d/1UV4GBtMiJEgb19ucLhUGpv1frdDNZI6-qTW-1w0zNdM"
+          >blog post</a>.
+        </p>
+
+        <p>
+          You will probably notice that your milage may vary.
+          Part of that could be attributed to there just not being a similar
+          story in the past. But, likely, also part of the reason is that the
+          model that encodes the sentences was trained on a different domain.
+          So, you can help to (maybe) improve the results in the
+          making use of the star ranking.
+        </p>
+
+        <p>
+          For feedback and suggestions please reach out to
+          <a
+            class="external-link"
+            href="https://twitter.com/phileisn"
+          >@phileisn</a>.
+        </p>
+      </accordion>
+      <p class="subtitle">Today's stories along with the most similar ones between 2006 and 2015.</p>
+      <p class="credits">
+        Built by
+        <a
+          class="external-link"
+          href="https://twitter.com/phileisn"
+          target="_blank"
+          rel="noopener"
+        >@phileisn</a> and
+        <a
+          class="external-link"
+          href="https://twitter.com/nilpath"
+          target="_blank"
+          rel="noopener"
+        >@nilpath</a>
+        at
+        <a
+          class="external-link"
+          href="https://peltarion.com/"
+          target="_blank"
+          rel="noopener"
+        >Peltarion</a>
+        using
+        <a
+          class="external-link"
+          href="https://github.com/UKPLab/sentence-transformers"
+          target="_blank"
+          rel="noopener"
+        >sentence-transformers</a>,
+        <a
+          class="external-link"
+          href="https://github.com/vuejs/vue-hackernews-2.0"
+          target="_blank"
+          rel="noopener"
+        >Vue.js</a> and
+        <a
+          class="external-link"
+          href="https://github.com/nmslib/hnswlib"
+          target="_blank"
+          rel="noopener"
+        >hnswlib</a>.
+      </p>
     </div>
+    <div class="footer">
+      <div class="news-list-nav">
+        <router-link v-if="page > 1" :to="'/' + type + '/' + (page - 1)">&lt; prev</router-link>
+        <a v-else class="disabled">&lt; prev</a>
+        <span>{{ page }}/{{ maxPage }}</span>
+        <router-link v-if="hasMore" :to="'/' + type + '/' + (page + 1)">more &gt;</router-link>
+        <a v-else class="disabled">more &gt;</a>
+      </div>
+    </div>
+
     <transition :name="transition">
       <div class="news-list" :key="displayedPage" v-if="displayedPage > 0">
         <transition-group tag="ul" name="item">
@@ -20,12 +98,14 @@
 <script>
 import { watchList } from "../api";
 import Item from "../components/Item.vue";
+import Accordion from "../components/Accordion.vue";
 
 export default {
   name: "item-list",
 
   components: {
-    Item
+    Item,
+    Accordion
   },
 
   props: {
@@ -101,23 +181,33 @@ export default {
 
 <style lang="stylus">
 .news-view {
-  padding-top: 45px;
+  padding-top: 23px;
 }
 
-.news-list-nav, .news-list {
-  background-color: #fff;
+.page-accordion {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.news-list {
+  background: #fff;
   border-radius: 2px;
 }
 
-.news-list-nav {
-  padding: 15px 30px;
+.footer {
+  background: #fff;
+  padding: 10px 30px;
   position: fixed;
   text-align: center;
-  top: 55px;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: 998;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.news-list-nav {
+  border-radius: 2px;
 
   a {
     margin: 0 1em;
@@ -126,6 +216,23 @@ export default {
   .disabled {
     color: #ccc;
   }
+}
+
+.subtitle {
+  font-size: 18px;
+  line-height: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.credits {
+  font-family: 'Courier New', Courier, monospace;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 13px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .news-list {

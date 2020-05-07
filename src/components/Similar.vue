@@ -1,21 +1,31 @@
 
 <template>
   <div class="similar-posts">
-    <span class="title">Similar:</span>
     <ul class="list" v-if="story.similar && story.similar.length !== 0">
       <li v-for="sim in story.similar" :key="sim.id">
-        <span
-          class="box"
-          v-bind:style="{ background: getColor(sim.similarity_score)}"
-          v-bind:title="sim.similarity_score"
-        ></span>
-        <router-link :to="'/item/' + sim.id">
-          {{ sim.title }} |
-          <b>{{ new Date(sim.time * 1000).getFullYear() }}</b>
-          | {{ sim.descendants }} comments |
-        </router-link>
+        <span class="year">{{ new Date(sim.time * 1000).getFullYear() }}</span>
+
+        <template v-if="sim.url">
+          <span>
+            <a
+              :href="sim.url"
+              target="_blank"
+              rel="noopener"
+            >{{ sim.title }} ({{ sim.url | host }})&nbsp;</a>
+
+            <router-link class="comments" :to="'/item/' + sim.id">{{ sim.descendants }} comments</router-link>
+          </span>
+
+          <!-- <span class="host">({{ sim.url | host }})</span> -->
+        </template>
+        <template v-else>
+          <span>
+            <router-link :to="'/item/' + sim.id">{{ sim.title }}&nbsp;</router-link>
+            <router-link class="comments" :to="'/item/' + sim.id">{{ sim.descendants }} comments</router-link>
+          </span>
+        </template>
         <client-only>
-          <div>
+          <div class="stars">
             <star-rating
               v-bind:star-size="15"
               active-color="#000000"
@@ -28,7 +38,7 @@
       </li>
     </ul>
     <div v-else class="no-posts">
-      <span class="title">No similar posts found.</span>
+      <span class="similar-posts">Something went wrong retrieving similar stories 😕.</span>
     </div>
   </div>
 </template>
@@ -45,23 +55,8 @@ export default {
     StarRating,
     ClientOnly
   },
-  data: () => {
-    return {
-      colorStops: [
-        { start: 0, stop: 0.7, color: "rgba(250, 157, 18, 0.5)" },
-        { start: 0.7, stop: 0.8, color: "rgba(250, 157, 18, 0.75)" },
-        { start: 0.8, stop: 2, color: "rgba(250, 157, 18, 1)" }
-      ]
-    };
-  },
-  methods: {
-    getColor: function(score) {
-      const found = this.colorStops.find(
-        cs => score.toFixed(2) >= cs.start && score.toFixed(2) < cs.stop
-      );
-      return found.color;
-    },
 
+  methods: {
     setRating: function(rating, similar, story) {
       sendFeedBack(story, similar, rating);
     }
@@ -70,8 +65,21 @@ export default {
 </script>
 
 <style lang="stylus">
+.stars {
+  position: absolute;
+  right: 40px;
+}
+
+.comments {
+  text-decoration: underline;
+}
+
 .similar-posts {
   line-height: 1.2;
+
+  .year {
+    padding-right: 8px;
+  }
 
   .box {
     width: 12px;
@@ -80,19 +88,25 @@ export default {
     margin-right: 8px;
   }
 
-  .title {
-    font-size: 0.85em;
+  .similar-posts {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
   }
 
   ul.list, .no-posts {
-    background-color: #f3f3f3;
+    background-color: #fff;
     font-size: 0.85em;
     margin: 4px 0;
     padding: 8px 12px;
     border-radius: 4px;
+    width = 716px;
+    font-family: 'Courier New', Courier, monospace;
 
     li {
       padding: 4px;
+      padding-right: 80px;
       display: flex;
       align-items: center;
     }

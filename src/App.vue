@@ -2,9 +2,9 @@
   <div id="app">
     <header class="header">
       <nav class="inner">
-        <router-link to="/" exact>
+        <a href="https://peltarion.com">
           <img class="logo" src="~public/logo-48.png" alt="logo" />
-        </router-link>
+        </a>
         <router-link to="/top">Top</router-link>
         <router-link to="/new">New</router-link>
         <router-link to="/show">Show</router-link>
@@ -15,40 +15,17 @@
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
     </transition>
-
-    <footer class="footer">
-      <div class="container">
-        <p>
-          Built with ❤️ using
-          <a
-            class="github"
-            href="https://github.com/UKPLab/sentence-transformers"
-            target="_blank"
-            rel="noopener"
-          >sentence-transformers</a>,
-          <a
-            class="github"
-            href="https://github.com/vuejs/vue-hackernews-2.0"
-            target="_blank"
-            rel="noopener"
-          >Vue.js</a> and
-          <a
-            class="github"
-            href="https://github.com/nmslib/hnswlib"
-            target="_blank"
-            rel="noopener"
-          >hnswlib</a>
-        </p>
-      </div>
-    </footer>
   </div>
 </template>
 
 <style lang="stylus">
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 22px;
   font-size: 15px;
-  background-color: lighten(#eceef1, 30%);
+  background-color: #fff;
   margin: 0;
   padding-top: 55px;
   color: #34495e;
@@ -63,10 +40,10 @@ footer {
   height: 40x;
   box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
 
-  .github {
-    text-decoration: underline;
-  }
+.external-link {
+  text-decoration: underline;
 }
 
 a {
@@ -75,7 +52,7 @@ a {
 }
 
 .header {
-  background-color: #ff6600;
+  background-color: #F7955B;
   position: fixed;
   z-index: 999;
   height: 55px;
@@ -91,7 +68,7 @@ a {
   }
 
   a {
-    color: rgba(255, 255, 255, 0.8);
+    color: #111F27;
     line-height: 24px;
     transition: color 0.15s ease;
     display: inline-block;
@@ -106,7 +83,6 @@ a {
 
     &.router-link-active {
       color: #fff;
-      font-weight: 400;
     }
 
     &:nth-child(6) {
@@ -150,10 +126,6 @@ a {
 
     a {
       margin-right: 1em;
-    }
-
-    .github {
-      display: none;
     }
   }
 }
