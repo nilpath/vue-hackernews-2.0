@@ -26,7 +26,6 @@
     <br />
     <br />
     <similar v-if="item.type === 'story'" :story="item"></similar>
-    <span class="label" v-if="item.type !== 'story'">{{ item.type }}</span>
   </li>
 </template>
 

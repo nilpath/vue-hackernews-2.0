@@ -38,7 +38,9 @@ export default {
     if (ids.length) {
       return fetchItems(ids)
         .then(items => {
-          if (items.every(item => item.type === 'story')) {
+          // Don't fetch similar if all items are Jobs (on /jobs)
+          // In other tabs there is rarely many jobs
+          if (!items.every(item => item.type === 'job')) {
 
             return fetchSimilar(items.map(item => item.title))
               .then(similar => items.map((item, idx) => {
@@ -58,7 +60,7 @@ export default {
                     return items;
                   });
               });
-              // Stop fetching similar posts (potential performance issue...)
+            // Stop fetching similar posts (potential performance issue...)
           }
           return items;
         })
