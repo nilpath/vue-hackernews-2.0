@@ -43,7 +43,7 @@ export default {
           let stories = items.filter(x => x.type === 'story')
 
           return fetchSimilar(stories.map(item => item.title))
-            .then(similar => items.map((item, idx) => {
+            .then(similar => stories.map((item, idx) => {
               item.similar = similar[idx];
               return item;
             }))
