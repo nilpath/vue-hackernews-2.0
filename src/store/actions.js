@@ -40,29 +40,30 @@ export default {
         .then(items => {
           // Don't fetch similar if all items are Jobs (on /jobs)
           // In other tabs there is rarely many jobs
-          if (!items.every(item => item.type === 'job')) {
+          let stories = items.filter(x => x.type === 'story')
+          let otherItems = items.filter(x => x.type !== 'story')
 
-            return fetchSimilar(items.map(item => item.title))
-              .then(similar => items.map((item, idx) => {
-                item.similar = similar[idx];
-                return item;
-              }))
-              // Start fetching similar posts (potential performance issue...)
-              .then((items) => {
-                return fetchItems(items.map(i => i.similar).flat().map(sim => sim.id))
-                  .then(similarItems => {
-                    items.forEach(item => {
-                      item.similar = item.similar.map(sim => {
-                        const simItem = similarItems.find(si => si.id === sim.id);
-                        return Object.assign({ similarity_score: sim.score }, simItem);
-                      });
+          return fetchSimilar(stories.map(item => item.title))
+            .then(similar => items.map((item, idx) => {
+              item.similar = similar[idx];
+              return item;
+            }))
+            // Start fetching similar posts (potential performance issue...)
+            .then((stories) => {
+              return fetchItems(stories.map(i => i.similar).flat().map(sim => sim.id))
+                .then(similarItems => {
+                  stories.forEach(item => {
+                    item.similar = item.similar.map(sim => {
+                      const simItem = similarItems.find(si => si.id === sim.id);
+                      return Object.assign({ similarity_score: sim.score }, simItem);
                     });
-                    return items;
                   });
-              });
-            // Stop fetching similar posts (potential performance issue...)
-          }
-          return items;
+                  return stories;
+                });
+            })
+            .then((stories) => { return stories.concat(otherItems) });
+          // Stop fetching similar posts (potential performance issue...)
+
         })
         .then(items => commit('SET_ITEMS', { items }))
     } else {
