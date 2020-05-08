@@ -41,7 +41,6 @@ export default {
           // Don't fetch similar if all items are Jobs (on /jobs)
           // In other tabs there is rarely many jobs
           let stories = items.filter(x => x.type === 'story')
-          let otherItems = items.filter(x => x.type !== 'story')
 
           return fetchSimilar(stories.map(item => item.title))
             .then(similar => items.map((item, idx) => {
@@ -61,7 +60,7 @@ export default {
                   return stories;
                 });
             })
-            .then((stories) => { return stories.concat(otherItems) });
+            .then((_) => { return items });
           // Stop fetching similar posts (potential performance issue...)
 
         })
