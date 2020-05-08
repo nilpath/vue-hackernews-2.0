@@ -46,7 +46,7 @@ export default {
 
 <style lang="stylus">
 .news-item {
-  background-color: #FFFEF2;
+  background-color: #FFFCE8;
   padding: 20px 30px 20px 30px;
   border-bottom: 1px solid #eee;
   position: relative;
