@@ -75,7 +75,10 @@ export function watchList(type, cb) {
   }
 }
 
-export function fetchSimilar(queries) {
+export function fetchSimilar(queries = []) {
+  if (queries.length === 0) {
+    return Promise.resolve([]);
+  }
   return fetchData('https://textsimilarity.research.peltarion.com/query/batch', {
     method: 'POST',
     body: JSON.stringify({
