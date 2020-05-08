@@ -2,9 +2,9 @@
   <div id="app">
     <header class="header">
       <nav class="inner">
-        <a href="https://peltarion.com">
+        <router-link to="/">
           <img class="logo" src="~public/logo-48.png" alt="logo" />
-        </a>
+        </router-link>
         <router-link to="/top">Top</router-link>
         <router-link to="/new">New</router-link>
         <router-link to="/show">Show</router-link>
