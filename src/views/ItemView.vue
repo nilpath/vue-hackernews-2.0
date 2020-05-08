@@ -15,10 +15,13 @@
         <similar v-if="item.type === 'story'" :story="item"></similar>
       </div>
       <div class="item-view-comments">
-        <p class="item-view-comments-header">
-          {{ item.kids ? item.descendants + ' comments' : 'No comments yet.' }}
-          <spinner v-if="loading" :show="loading"></spinner>
-        </p>
+        <div class="item-view-comments-header">
+          <div v-if="item.kids">
+            {{ item.descendants + ' comments' }}
+            <spinner v-if="loading" :show="loading"></spinner>
+          </div>
+          <div v-else>No comments yet.</div>
+        </div>
         <ul v-if="!loading" class="comment-children">
           <comment v-for="id in item.kids" :key="id" :id="id"></comment>
         </ul>
