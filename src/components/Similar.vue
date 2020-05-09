@@ -110,6 +110,16 @@ export default {
       display: flex;
       align-items: center;
     }
+
+    @media only screen and (max-width: 750px) {
+      li {
+        padding-right: 4px;
+      }
+
+      .stars {
+        display: none;
+      }
+    }
   }
 
   a {
