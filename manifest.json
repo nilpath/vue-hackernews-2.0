@@ -1,6 +1,6 @@
 {
   "name": "HN Time-Machine",
-  "short_name": "HN ⏳",
+  "short_name": "HN ⏳🚀",
   "icons": [{
     "src": "/public/logo-120.png",
     "sizes": "120x120",
@@ -31,7 +31,7 @@
     "type": "image/png"
   }],
   "start_url": "/",
-  "background_color": "#f2f3f5",
+  "background_color": "#fff",
   "display": "standalone",
-  "theme_color": "#f60"
+  "theme_color": "#F7955B"
 }

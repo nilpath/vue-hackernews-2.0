@@ -82,6 +82,16 @@
         <router-link v-if="hasMore" :to="'/' + type + '/' + (page + 1)">more &gt;</router-link>
         <a v-else class="disabled">more &gt;</a>
       </div>
+      <div class="peltarion-normal">
+        <a href="https://peltarion.com/" target="_blank" rel="noopener">
+          <img class="logo-horizontal" src="~public/logo-horizontal-48.png" alt="logo-horizontal" />
+        </a>
+      </div>
+      <div class="peltarion-small">
+        <a href="https://peltarion.com/" target="_blank" rel="noopener">
+          <img class="logo-small" src="~public/logo-48.png" alt="logo-small" />
+        </a>
+      </div>
     </div>
 
     <transition :name="transition">
@@ -206,6 +216,7 @@ export default {
 }
 
 .news-list-nav {
+  display: inline;
   border-radius: 2px;
 
   a {
@@ -215,6 +226,40 @@ export default {
   .disabled {
     color: #ccc;
   }
+}
+
+.peltarion-normal {
+  display: inline;
+  float: right;
+  margin-left: -86px;
+}
+
+.peltarion-small {
+  float: right;
+  display: none;
+  margin-left: -18px;
+}
+
+@media (max-width: 600px) {
+  .peltarion-normal {
+    display: none;
+  }
+
+  .peltarion-small {
+    display: inline;
+  }
+}
+
+.logo-horizontal {
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo-small {
+  width: 18px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .credits {

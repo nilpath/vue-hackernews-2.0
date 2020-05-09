@@ -109,7 +109,7 @@ function fetchComments(store, item) {
 
 <style lang="stylus">
 .item-view-header {
-  background-color: #fff;
+  background-color: #FFFCE8;
   padding: 1.8em 2em 1em;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 

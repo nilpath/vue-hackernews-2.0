@@ -11,7 +11,7 @@
               :href="sim.url"
               target="_blank"
               rel="noopener"
-            >{{ sim.title }} ({{ sim.url | host }})&nbsp;</a>
+            >{{ sim.title }} ({{ sim.url | host }}) </a>
 
             <router-link class="comments" :to="'/item/' + sim.id">{{ sim.descendants }} comments</router-link>
           </span>
@@ -111,7 +111,7 @@ export default {
       align-items: center;
     }
 
-    @media only screen and (max-width: 750px) {
+    @media (max-width: 750px) {
       li {
         padding-right: 4px;
       }
