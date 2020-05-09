@@ -38,9 +38,13 @@ export default {
     if (ids.length) {
       return fetchItems(ids)
         .then(items => {
-          // Don't fetch similar if all items are Jobs (on /jobs)
-          // In other tabs there is rarely many jobs
-          let stories = items.filter(x => x.type === 'story')
+          // Only fetch similar items for stories
+          let stories = items.filter(x => {
+            if (x.hasOwnProperty('type')) {
+              return x.type === 'story'
+            }
+            return false;
+          })
 
           return fetchSimilar(stories.map(item => item.title))
             .then(similar => stories.map((item, idx) => {

@@ -32,16 +32,6 @@ body {
   overflow-y: scroll;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #fff;
-  height: 40x;
-  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
 .external-link {
   text-decoration: underline;
 }
@@ -73,7 +63,7 @@ a {
     transition: color 0.15s ease;
     display: inline-block;
     vertical-align: middle;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.075em;
     margin-right: 1.8em;
 

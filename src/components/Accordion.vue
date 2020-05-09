@@ -5,7 +5,10 @@
         <span class="accordion-title">{{title}}</span>
         <p class="subtitle">
           Today's stories along with the most similar ones between 2006 and 2015.
-          <span class="expand-cta cta" v-show="!active">(read more ▼)</span>
+          <span
+            class="expand-cta cta"
+            v-show="!active"
+          >(read more ▼)</span>
           <span class="collapse-cta cta" v-show="active">(show less ▲)</span>
         </p>
       </a>
@@ -18,26 +21,27 @@
 
 
 <style lang="stylus">
-  .accordion-title {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 20px;
-  }
+.accordion-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 20px;
+}
 
-  .subtitle {
-    font-size: 18px;
-    line-height: 18px;
-  }
+.subtitle {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 500;
+}
 
-  .tab__content {
-    background-color: #FFFEF2;
-    padding: 4px 16px;
-  }
+.tab__content {
+  background-color: #FFFEF2;
+  padding: 4px 16px;
+}
 
-  .cta {
-    font-size: 14px;
-  }
+.cta {
+  font-size: 14px;
+}
 </style>
 
 
