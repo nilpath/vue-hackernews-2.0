@@ -7,20 +7,13 @@
 
         <template v-if="sim.url">
           <span>
-            <a
-              :href="sim.url"
-              target="_blank"
-              rel="noopener"
-            >{{ sim.title }} ({{ sim.url | host }}) </a>
-
+            <a :href="sim.url" target="_blank" rel="noopener">{{ sim.title }} ({{ sim.url | host }}) </a>
             <router-link class="comments" :to="'/item/' + sim.id">{{ sim.descendants }} comments</router-link>
           </span>
-
-          <!-- <span class="host">({{ sim.url | host }})</span> -->
         </template>
         <template v-else>
           <span>
-            <router-link :to="'/item/' + sim.id">{{ sim.title }}&nbsp;</router-link>
+            <router-link :to="'/item/' + sim.id">{{ sim.title }} </router-link>
             <router-link class="comments" :to="'/item/' + sim.id">{{ sim.descendants }} comments</router-link>
           </span>
         </template>
@@ -28,7 +21,8 @@
           <div class="stars">
             <star-rating
               v-bind:star-size="15"
-              active-color="#000000"
+              active-color="#F04E4C"
+              inactive-color="#D0D7DD"
               v-bind:show-rating="false"
               @rating-selected="setRating($event, sim.title, story.title)"
               v-bind:inline="true"

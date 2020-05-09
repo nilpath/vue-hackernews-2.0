@@ -20,9 +20,10 @@
         |
         <router-link :to="'/item/' + item.id">{{ item.descendants }} comments</router-link>
       </span>
-
-      <span>&nbsp;| {{item.score}} points</span>
+      |
+      <span>{{item.score}} points</span>
     </span>
+    <span class="rate-cta">Rate similarity</span>
     <br />
     <br />
     <similar v-if="item.type === 'story'" :story="item"></similar>
@@ -51,6 +52,21 @@ export default {
   border-bottom: 1px solid #eee;
   position: relative;
   line-height: 20px;
+
+  .rate-cta {
+    float: right;
+    font-size: 0.85em;
+    padding-right: 30 px;
+    display: inline-block;
+    width: 55px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  @media (max-width: 750px) {
+    .rate-cta {
+      display: none;
+    }
+  }
 
   .meta, .host {
     font-size: 0.85em;

@@ -6,9 +6,9 @@
         <p>
           Each story on the current HackerNews frontpage is presented with the
           top 3 most similar stories based on their titles between 2006 and
-          2015. More specifically the titles are encoded into semantically
+          2015. More specifically, the titles are encoded into semantically
           meaningful vectors and then ranked using cosine similarity.
-          If you want to learn more this, check out our
+          If you want to learn more about this, check out our
           <a
             class="external-link"
             href="https://docs.google.com/document/d/1UV4GBtMiJEgb19ucLhUGpv1frdDNZI6-qTW-1w0zNdM"
@@ -20,12 +20,18 @@
           Part of that could be attributed to there just not being a similar
           story in the past. But, likely, also part of the reason is that the
           model that encodes the sentences was trained on a different domain.
-          So, you can help to (maybe) improve the results in the
-          making use of the star ranking.
+          The perception of what is similar can vary greatly between different
+          domains.
         </p>
 
         <p>
-          For feedback and suggestions please reach out to
+          You can help to (maybe) improve the model's understanding of
+          similarity in the domain of HackerNews stories by making use of the
+          star rating.
+        </p>
+
+        <p>
+          For feedback, questions and suggestions please reach out to
           <a
             class="external-link"
             href="https://twitter.com/phileisn"
