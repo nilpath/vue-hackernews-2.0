@@ -23,7 +23,7 @@
       |
       <span>{{item.score}} points</span>
     </span>
-    <span class="rate-cta">Rate similarity</span>
+    <span v-if="item.type !== 'job'" class="rate-cta">Rate similarity</span>
     <br />
     <br />
     <similar v-if="item.type === 'story'" :story="item"></similar>
