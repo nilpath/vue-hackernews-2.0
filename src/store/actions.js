@@ -40,7 +40,7 @@ export default {
         .then(items => {
           // Only fetch similar items for stories
           let stories = items.filter(x => {
-            if (x !== null && x.hasOwnProperty('type')) {
+            if (x !== null && x !== undefined && x.hasOwnProperty('type')) {
               return x.type === 'story'
             }
             return false;
