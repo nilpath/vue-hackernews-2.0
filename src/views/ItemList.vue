@@ -11,7 +11,7 @@
           If you want to learn more about this, check out our
           <a
             class="external-link"
-            href="https://docs.google.com/document/d/1UV4GBtMiJEgb19ucLhUGpv1frdDNZI6-qTW-1w0zNdM"
+            href="https://peltarion.com/blog/applied-ai/hacker-news-time-machine"
           >blog post</a>.
         </p>
 
