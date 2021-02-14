@@ -62,10 +62,10 @@
         using
         <a
           class="external-link"
-          href="https://github.com/UKPLab/sentence-transformers"
+          href="https://github.com/FreddeFrallan/Contrastive-Tension"
           target="_blank"
           rel="noopener"
-        >sentence-transformers</a>,
+        >Contrastive Tension Embeddings</a>,
         <a
           class="external-link"
           href="https://github.com/vuejs/vue-hackernews-2.0"
